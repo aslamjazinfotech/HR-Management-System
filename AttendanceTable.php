@@ -1,6 +1,22 @@
 <?php
-include "Attendancedatabase.php";
+// include "database.php";
 
+?>
+<?php
+include 'database.php';
+if(isset($_GET['deleteid'])){
+    $id=$_GET['deleteid'];
+
+    $sql="delete from `attendance` where id=$id";
+    $result=mysqli_query($conn,$sql);
+    if($result){
+        // echo "Delete Successfully";
+        header('location:AttendanceTable.php');
+    }
+    else{
+        die(mysqli_error($con));
+    }
+}
 ?>
 
 
@@ -31,7 +47,7 @@ include "Attendancedatabase.php";
       <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white "></div>
        <span class="h5 text-white">Dashboard</span>
        <hr class="sidebar-divider my-2">
-        <a  class= "nav-link" href="">
+        <a  class= "nav-link" href="EmployeeData.php">
         <i class="bi bi-people text-white"></i>
         <span class="text-white">Empolyees</span>
         <hr class="sidebar-divider my-2">
@@ -50,25 +66,25 @@ include "Attendancedatabase.php";
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">S.NO</th>
-      <th scope="col">Employee</th>
-      <th scope="col">Date</th>
-      <th scope="col">TimeIn</th>
-      <th scope="col">Timeout</th>
-      <th scope="col">operation</th>
+      <th>S.NO</th>
+      <th>Employee</th>
+      <th>Date</th>
+      <th>TimeIn</th>
+      <th>Timeout</th>
+      <th>operation</th>
     </tr>
   </thead>
   <tbody>
     </tbody>
     <?php 
-    $sql="select * from `students`";;
-    $result=mysqli_query($con,$sql);
+    $sql="select * from `attendance`";;
+    $result=mysqli_query($conn,$sql);
     if($result){
       while($row=mysqli_fetch_assoc($result)){
         $id=$row['id'];
         $Employee=$row['Employee'];
         $Date=$row['Date'];
-        $Timein=$row['TimeIn'];
+        $Timein=$row['Timein'];
         $Timeout=$row['Timeout'];
         echo '<tr>
         <th scope="row">'.$id.'</th>
@@ -78,7 +94,7 @@ include "Attendancedatabase.php";
            <td>'.$Timeout.'</td>
            <td>
            
-           <button class="btn btn-danger"><a href="delete.php? deleteid='.$id.'" class="text-light ">Delete</a></button>
+           <button class="btn btn-danger"><a href="AttendanceTable.php? deleteid='.$id.'" class="text-light ">Delete</a></button>
            </td>
 
     </tr>';

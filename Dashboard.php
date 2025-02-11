@@ -31,7 +31,7 @@
         <i class="bi bi-people text-white"></i>
         <span class="text-white">Empolyees</span>
         <hr class="sidebar-divider my-2">
-        <a  class= "nav-link" href="">
+        <a  class= "nav-link" href="AttendanceTable.php">
         <i class="bi bi-alarm text-white"></i>
         <span class="text-white">Atttendence</span>
 </a>

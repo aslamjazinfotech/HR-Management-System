@@ -1,5 +1,5 @@
 <?php
-include "Attendancedatabase.php";
+include "database.php";
 
 $nameErr = $dateErr = $TimeErr = $TimeoutErr = "";
 $username = $date = $Time = $Timeout = "";
@@ -46,10 +46,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $TimeIn = $Time;
         $TimeOutValue = $Timeout; 
 
-        $sql = "INSERT INTO `students` (Employee, Date, TimeIn, Timeout) 
+        $sql = "INSERT INTO `attendance` (Employee, Date, TimeIn, Timeout) 
                 VALUES ('$Employee', '$Date', '$TimeIn', '$TimeOutValue')";
 
-        if (mysqli_query($con, $sql)) {
+        if (mysqli_query($conn, $sql)) {
             header('Location: AttendanceTable.php');
             exit;
         } else {

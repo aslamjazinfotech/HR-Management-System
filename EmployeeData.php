@@ -1,5 +1,21 @@
 <?php 
-include("database.php");
+// include("database.php");
+?>
+<?php
+include 'database.php';
+if(isset($_GET['deleteid'])){
+    $id=$_GET['deleteid'];
+
+    $sql="delete from `employee` where id=$id";
+    $result=mysqli_query($conn,$sql);
+    if($result){
+        // echo "Delete Successfully";
+        header('location:EmployeeData.php');
+    }
+    else{
+        die(mysqli_error($conn));
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +50,7 @@ include("database.php");
         <i class="bi bi-people text-white"></i>
         <span class="text-white">Empolyees</span>
         <hr class="sidebar-divider my-2">
-        <a  class= "nav-link" href="">
+        <a  class= "nav-link" href="AttendanceTable.php">
         <i class="bi bi-alarm text-white"></i>
         <span class="text-white">Atttendence</span>
 </a>
@@ -52,6 +68,7 @@ include("database.php");
             <th>Country</th>
             <th>Gender</th>
             <th>Joining Date</th>
+            <th>Operation</th>
         </thead>
         <tbody>
             <?php
@@ -59,7 +76,7 @@ include("database.php");
                 $result = mysqli_query($conn,$sql);
                 if($result){
                     while($row = mysqli_fetch_assoc($result)){
-                        $ID=$row["ID"];
+                        $id=$row["id"];
                         $FirstName=$row["FirstName"];
                         $LastName=$row["LastName"];
                         $EmailAddress=$row["EmailAddress"];
@@ -68,15 +85,17 @@ include("database.php");
                         $Gender=$row["Gender"];
                         $JoiningDate=$row["JoiningDate"];
                         echo'<tr>
-                        <th scope="row">'.$ID.'</th>
+                        <th scope="row">'.$id.'</th>
                         <td>'.$FirstName.'</td>
                         <td>'.$LastName.'</td>
                         <td>'.$EmailAddress.'</td>
                         <td>'.$PhoneNo.'</td>
                         <td>'.$Country.'</td>
                         <td>'.$Gender.'</td>
-                        <td>'.$JoiningDate.'</td>';
-
+                        <td>'.$JoiningDate.'</td>
+                        <td>
+                         <button class="btn btn-danger"><a href="EmployeeData.php? deleteid='.$id.'" class="text-light ">Delete</a></button>
+                        </td>';
                     }
                 }
             ?>
