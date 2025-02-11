@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HR Management System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
@@ -27,7 +27,7 @@
       <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white "></div>
        <span class="h5 text-white">Dashboard</span>
        <hr class="sidebar-divider my-2">
-        <a  class= "nav-link" href="">
+        <a  class= "nav-link" href="EmployeeData.php">
         <i class="bi bi-people text-white"></i>
         <span class="text-white">Empolyees</span>
         <hr class="sidebar-divider my-2">
@@ -37,9 +37,8 @@
 </a>
     </div>
     </div>
-    <div class="container-fluid p-4">
+    <!-- <div class="container-fluid p-4">
             <div class="row">
-                <!-- Page Views -->
                 <div class="col-xl-2 col-md-3 mb-4 mt-3">
                     <div class="card border-left-info shadow h-100">
                         <div class="card-body">
@@ -145,7 +144,7 @@
                 
 </div>
 </div>
-
+ -->
 
 
 
