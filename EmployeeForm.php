@@ -1,5 +1,35 @@
 <?php
+include("database.php");
+    $err = "";
 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+    $country = $_POST['country'];
+    $phone = $_POST['phone'];
+    $gender = $_POST['gender'] ?? '';
+    $date = $_POST['date'];
+
+    if(!empty($fname) && !empty($lname) && !empty($email) && !empty($phone) ){
+        $FirstName = $fname;
+        $LastName = $lname;
+        $EmailAddress = $email;
+        $PhoneNo = $phone;
+        $Country =$country;
+        $Gender = $gender;
+        $JoiningDate = $date;
+
+        $sql = "INSERT INTO `employee`(FirstName, LastName, EmailAddress, PhoneNo, Country, Gender, JoiningDate) VALUES('$FirstName','$LastName','$EmailAddress','$PhoneNo','$Country','$Gender','$JoiningDate')";
+        if(mysqli_query($conn, $sql)){
+            header("Location:EmployeeData.php");
+            die;
+        }
+    }
+    else{
+        $err = "*Required Field";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,24 +48,27 @@
             <div class="text-center">
                 <img class=" m-4" src="/images/logo.png">
             </div>
-            <h6 class="mt-2">Sign In</h6>
-            <label class="mt-2" for="">First Name</label><br>
-            <input class="mt-2 form-control" type="text" name="f-name" value="" placeholder="First Name">
-            <label class="mt-2" for="">Last Name</label>
-            <input class="mt-2 form-control" type="text" name="L-name" value="" placeholder="Last Name">
-            <label class="mt-2" for="">Email Address</label><br>
+            <h6 class="mt-2">Employee Form</h6>
+            <label class="mt-2 form-label" for="">First Name</label>
+            <input class="mt-2 form-control" type="text" name="fname" value="" placeholder="First Name">
+            <p class="text-danger"><?php echo $err;?></p>
+            <label class=" form-label" for="">Last Name</label>
+            <input class="mt-2 form-control" type="text" name="lname" value="" placeholder="Last Name">
+            <p class="text-danger"><?php echo $err;?></p>
+            <label class="mt-2 form-label" for="">Email Address</label>
             <input class="mt-2 form-control" type="email" name="email" value="" placeholder="Email">
-            <label class="mt-2" for=""> Country </label>
-            <input type="text" class="form-control" name="country" value="" placeholder="Country">
-            <label class="mt-2" for=""> Phone Number </label>
+            <p class="text-danger"><?php echo $err;?></p>
+            <label class="mt-2 form-label" for=""> Phone Number </label>
             <input type="phone" class="form-control" name="phone" value="" placeholder="Phone No">
-            <label class="mt-2" for=""> Gender </label><br> 
-            <input type="radio" name="gender" value="" placeholder="Gender">Male <br>
-            <input type="radio" name="gender" value="" placeholder="Gender">Female <br>
-            <label class="mt-2" for="">Joining Date</label>
-            <input type="date" class="form-control" value="" placeholder="Joining Date">
-            <input class="mt-3 w-100 btn btn-primary rounded-pill" type="submit" name="signin" value="Sign In"><br>
-            <div class="text-center mt-3"><a href="#">Forget Password ?</a></div><br>
+            <p class="text-danger"><?php echo $err;?></p>
+            <label class="mt-2 form-label" for=""> Country </label>
+            <input type="text" class="form-control" name="country" value="" placeholder="Country">
+            <label class="mt-2 form-label" for=""> Gender </label><br> 
+            <input type="radio" name="gender" value="M" placeholder="Gender">Male <br>
+            <input type="radio" name="gender" value="F" placeholder="Gender">Female <br>
+            <label class="mt-2 form-label" for="">Joining Date</label>
+            <input type="date" class="form-control" name="date" value="" placeholder="Joining Date">
+            <input class="mt-3 mb-3 w-100 btn btn-primary rounded-pill" type="submit" name="signin" value="Submit">
     </div>
     </form>
     </div>
