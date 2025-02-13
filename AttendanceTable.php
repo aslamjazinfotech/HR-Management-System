@@ -70,7 +70,7 @@ if(isset($_GET['deleteid'])){
 <div class="container-fluid p-4">
 <div class="row">
    <div class="container">
-    <button class="btn btn-primary my-5 "><a href="AttendanceForm.php" class="text-light">Add</a>
+    <button class="btn btn-primary my-5 "><a href="AttendanceForm.php" class="text-white text-decoration-none">Add</a>
 </button>
 <table class="table">
   <thead>
@@ -103,7 +103,7 @@ if(isset($_GET['deleteid'])){
            <td>'.$Timeout.'</td>
            <td>
            
-           <button class="btn btn-danger"><a href="AttendanceTable.php? deleteid='.$id.'" class="text-light ">Delete</a></button>
+           <button class="btn btn-danger"><a class="text-white text-decoration-none href="AttendanceTable.php? deleteid='.$id.'" class="text-light ">Delete</a></button>
            </td>
 
     </tr>';
