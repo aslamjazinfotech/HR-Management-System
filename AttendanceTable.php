@@ -103,7 +103,7 @@ if(isset($_GET['deleteid'])){
            <td>'.$Timeout.'</td>
            <td>
            
-           <button class="btn btn-danger"><a class="text-white text-decoration-none href="AttendanceTable.php? deleteid='.$id.'" class="text-light ">Delete</a></button>
+           <button class="btn btn-danger"><a href="AttendanceTable.php? deleteid='.$id.'" class="text-white text-decoration-none">Delete</a></button>
            </td>
 
     </tr>';
