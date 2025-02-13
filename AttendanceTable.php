@@ -1,6 +1,15 @@
 <?php
-// include "database.php";
+include("database.php");
+    session_start();
 
+    $userprofile = $_SESSION["email"];
+
+    if($userprofile == true){
+        
+    }
+    else{
+        header("Location:index.php");
+    }
 ?>
 <?php
 include 'database.php';
@@ -51,7 +60,7 @@ if(isset($_GET['deleteid'])){
         <i class="bi bi-people text-white"></i>
         <span class="text-white">Empolyees</span>
         <hr class="sidebar-divider my-2">
-        <a  class= "nav-link" href="AttendanceTab">
+        <a  class= "nav-link" href="AttendanceTable.php">
         <i class="bi bi-alarm text-white"></i>
         <span class="text-white">Atttendence</span>
 </a>

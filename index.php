@@ -1,11 +1,14 @@
 <?php
 include("database.php");
+session_start();
 $error = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = $_POST["email"];
     $password = $_POST["password"];
 
     if(!empty($email) && !empty($password) && !is_numeric($email)){
+        $_SESSION["email"] =$email;
+
         $query = "select * from users where email = '$email' limit 1";
         $result = mysqli_query($conn, $query);
 
