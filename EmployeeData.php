@@ -1,5 +1,15 @@
-<?php 
-// include("database.php");
+<?php
+include("database.php");
+    session_start();
+
+    $userprofile = $_SESSION["email"];
+
+    if($userprofile == true){
+        
+    }
+    else{
+        header("Location:index.php");
+    }
 ?>
 <?php
 include 'database.php';

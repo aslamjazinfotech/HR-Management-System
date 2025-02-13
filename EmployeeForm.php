@@ -1,5 +1,18 @@
 <?php
 include("database.php");
+    session_start();
+
+    $userprofile = $_SESSION["email"];
+
+    if($userprofile == true){
+        
+    }
+    else{
+        header("Location:index.php");
+    }
+?>
+<?php
+
     $err = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -80,4 +93,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 </html>
 <?php 
+
 ?>

@@ -1,5 +1,18 @@
 <?php
-include "database.php";
+include("database.php");
+    session_start();
+
+    $userprofile = $_SESSION["email"];
+
+    if($userprofile == true){
+        
+    }
+    else{
+        header("Location:index.php");
+    }
+?>
+
+<?php
 
 $nameErr = $dateErr = $TimeErr = $TimeoutErr = "";
 $username = $date = $Time = $Timeout = "";

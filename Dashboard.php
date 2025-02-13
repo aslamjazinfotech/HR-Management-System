@@ -1,3 +1,18 @@
+<?php
+include("database.php");
+session_start();
+
+$userprofile = $_SESSION["email"];
+
+if($userprofile == true){
+    
+}
+else{
+    header("Location:index.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
