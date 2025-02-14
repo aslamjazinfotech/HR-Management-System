@@ -16,7 +16,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(mysqli_num_rows($result) > 0){
                 $user_data = mysqli_fetch_assoc($result);
                 $hased = password_verify($password, $user_data['password']);
-                // Use password_verify to check the hashed password
                 if($user_data["Password"] == $hased){
                     header("Location: dashboard.php");
                     die;
