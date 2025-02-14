@@ -15,15 +15,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if($result){
             if(mysqli_num_rows($result) > 0){
                 $user_data = mysqli_fetch_assoc($result);
-<<<<<<< HEAD
-
-                if($user_data['Password'] == $password){
-                    header("Location:Dashboard.php");
-=======
                 $hased = password_verify($password, $user_data['password']);
                 if($user_data["Password"] == $hased){
                     header("Location: dashboard.php");
->>>>>>> baad53870f239ddbb47ef4ae41a67bac919ebf5d
                     die;
                 }
             }
