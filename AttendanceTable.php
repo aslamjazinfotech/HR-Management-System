@@ -106,8 +106,12 @@ if(isset($_GET['deleteid'])){
            <td>'.$Timeout.'</td>
            <td>
            
+<<<<<<< HEAD
            <button class="btn btn-primary"><a  href="update.php? updateid='.$id.'" class="text-light text-white text-decoration-none">Update</a></button>
            <button class="btn btn-danger"><a  href="AttendanceTable.php? deleteid='.$id.'" class="text-light text-white text-decoration-none">Delete</a></button>
+=======
+           <button class="btn btn-danger"><a href="AttendanceTable.php? deleteid='.$id.'" class="text-white text-decoration-none">Delete</a></button>
+>>>>>>> baad53870f239ddbb47ef4ae41a67bac919ebf5d
            </td>
 
     </tr>';
