@@ -17,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $user_data = mysqli_fetch_assoc($result);
 
                 if($user_data['Password'] == $password){
-                    header("Location:dashboard.php");
+                    header("Location:Dashboard.php");
                     die;
 
                 }

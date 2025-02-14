@@ -45,12 +45,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $Time = test_input($_POST['Time']);
     }
 
-    if (empty($_POST['Timeout'])) {
-        $TimeoutErr = " *Time out is required";
-        $isValid = false;
-    } else {
-        $Timeout = test_input($_POST['Timeout']);
-    }
+    // if (empty($_POST['Timeout'])) {
+    //     $TimeoutErr = " *Time out is required";
+    //     $isValid = false;
+    // } else {
+    //     $Timeout = test_input($_POST['Timeout']);
+    // }
 
    
     if ($isValid && isset($_POST['submit'])) {
@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 function test_input($data) {
     return htmlspecialchars(stripslashes(trim($data)));
 }
-
+    
 ?>
 
 <!DOCTYPE html>

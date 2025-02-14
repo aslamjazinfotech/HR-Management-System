@@ -104,7 +104,7 @@ if(isset($_GET['deleteid'])){
                         <td>'.$Gender.'</td>
                         <td>'.$JoiningDate.'</td>
                         <td>
-                         <button class="btn btn-danger"><a class="text-white text-decoration-none href="EmployeeData.php? deleteid='.$id.'" class="text-light ">Delete</a></button>
+                         <button class="btn btn-danger"><a class="text-white text-decoration-none" href="EmployeeData.php? deleteid='.$id.'" class="text-light ">Delete</a></button>
                         </td>';
                     }
                 }
