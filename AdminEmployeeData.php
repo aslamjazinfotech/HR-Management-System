@@ -82,7 +82,7 @@ if(isset($_GET['deleteid'])){
         </thead>
         <tbody>
             <?php
-                $sql = "select * from `employee` where EmailAddress = '$userprofile' ";
+                $sql = "select * from `employee`";
                 $result = mysqli_query($conn,$sql);
                 if($result){
                     while($row = mysqli_fetch_assoc($result)){
