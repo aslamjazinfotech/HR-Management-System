@@ -113,7 +113,6 @@ if($result){
         echo '<tr>
         <th scope="row">'.$id.'</th>
         <td>'.$Employee.'</td>
-<<<<<<< HEAD
         <td>'.$Date.'</td>
         <td>'.$Timein.'</td>
         <td>'.$Timeout.'</td>
@@ -123,19 +122,6 @@ if($result){
             <button class="btn btn-danger"><a href="AttendanceTable.php?deleteid='.$id.'" class="text-light text-white text-decoration-none">Delete</a></button>
         </td>
         </tr>';
-=======
-         <td>'.$Date.'</td>
-          <td>'.$Timein.'</td>
-           <td>'.$Timeout.'</td>
-           <td>
-           
-           <button class="btn btn-primary"><a  href="update.php? updateid='.$id.'" class="text-light text-white text-decoration-none">Update</a></button>
-           <button class="btn btn-danger"><a  href="AttendanceTable.php? deleteid='.$id.'" class="text-light text-white text-decoration-none">Delete</a></button>
-           </td>
-
-    </tr>';
-      }
->>>>>>> 8942cfef4aa9875636a568205104d2e9af06b02b
     }
 }
 ?>
