@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $sql = "INSERT INTO `users`(Username, email, password, cpassword, gender) VALUES('$username','$email','$hash','$hash','$gender')";
         if (mysqli_query($conn, $sql)) {
-          header("Location:index.php");
+          header("Location:login.php");
           die;
         }
       } else {

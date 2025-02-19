@@ -82,7 +82,7 @@ if(isset($_GET['deleteid'])){
         </thead>
         <tbody>
             <?php
-                $sql = "select * from `employee` where EmailAddress = '$userprofile' ";
+                $sql = "select * from `employee`";
                 $result = mysqli_query($conn,$sql);
                 if($result){
                     while($row = mysqli_fetch_assoc($result)){
@@ -104,12 +104,7 @@ if(isset($_GET['deleteid'])){
                         <td>'.$Gender.'</td>
                         <td>'.$JoiningDate.'</td>
                         <td>
-<<<<<<< HEAD
                          <button class="btn btn-danger"><a href="EmployeeData.php? deleteid='.$id.'" class="text-white text-decoration-none">Delete</a></button>
-
-=======
-                         <button class="btn btn-danger"><a class="text-white text-decoration-none" href="EmployeeData.php? deleteid='.$id.'" class="text-light ">Delete</a></button>
->>>>>>> 8942cfef4aa9875636a568205104d2e9af06b02b
                         </td>';
                     }
                 }
