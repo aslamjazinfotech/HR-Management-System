@@ -1,21 +1,16 @@
 <?php
 include("database.php");
-    session_start();
+session_start();
 
-    $userprofile = $_SESSION["email"];
 
-    if($userprofile == true){
-        
-    }
-    else{
-        header("Location:index.php");
-    }
-?>
-
-<?php
+if (!isset($_SESSION["email"])) {
+    header("Location: index.php");
+    exit;
+}
 
 $nameErr = $dateErr = $TimeErr = $TimeoutErr = "";
 $username = $date = $Time = $Timeout = "";
+$Totalhour = 0; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $isValid = true; 
@@ -31,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    
     if (empty($_POST['date'])) {
         $dateErr = " *Date is required";
         $isValid = false;
@@ -38,35 +34,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $date = test_input($_POST['date']);
     }
 
+   
     if (empty($_POST['Time'])) {
         $TimeErr = " *Time is required";
-        $isValid = false;
+        $isValid = false; 
     } else {
         $Time = test_input($_POST['Time']);
     }
 
-    // if (empty($_POST['Timeout'])) {
-    //     $TimeoutErr = " *Time out is required";
-    //     $isValid = false;
-    // } else {
-    //     $Timeout = test_input($_POST['Timeout']);
-    // }
 
-   
     if ($isValid && isset($_POST['submit'])) {
         $Employee = $username;
         $Date = $date;
         $TimeIn = $Time;
-        $TimeOutValue = $Timeout; 
+        
 
-        $sql = "INSERT INTO `attendance` (Employee, Date, TimeIn, Timeout) 
-                VALUES ('$Employee', '$Date', '$TimeIn', '$TimeOutValue')";
+      
+
+        
+        $sql = "INSERT INTO `attendance` (Employee, Date, TimeIn, Timeout, Totalhour) 
+                VALUES ('$Employee', '$Date', '$TimeIn', '$Timeout', $Totalhour)";
 
         if (mysqli_query($conn, $sql)) {
             header('Location: AttendanceTable.php');
             exit;
         } else {
-            die("Database Error: " . mysqli_error($con));
+            die("Database Error: " . mysqli_error($conn));
         }
     }
 }
@@ -74,7 +67,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 function test_input($data) {
     return htmlspecialchars(stripslashes(trim($data)));
 }
-    
 ?>
 
 <!DOCTYPE html>
@@ -116,13 +108,13 @@ function test_input($data) {
 
           <div class="mb-3">
             <label for="time_in" class="form-label">Time In *</label>
-            <input type="time" class="form-control" name="Time">
+            <input type="time" class="form-control timepicker" name="Time">
             <span class="error"><?php echo $TimeErr?></span>
           </div>
 
           <div class="mb-3">
             <label for="time_out" class="form-label">Time Out *</label>
-            <input type="time" class="form-control" name="Timeout">
+            <input type="time" class="form-control timepicker" name="Timeout">
             <span class="error"><?php echo $TimeoutErr?></span>
           </div>
 

@@ -28,13 +28,18 @@ if (isset($_GET['updateid'])) {
     $Date = $row['Date'];
     $Timein = $row['Timein'];
     $Timeout = $row['Timeout'];
+    $Totalhour = $row['Totalhour'];
+    
 }
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Employee = $_POST["username"];
     $Date = $_POST["date"];
     $Timein = $_POST["Time"];
     $Timeout = $_POST["Timeout"];
+
+   
 
     $sql = "UPDATE `attendance` SET Employee = '$Employee',Date = '$Date',Timein ='$Timein',Timeout='$Timeout' WHERE id=$id";
     $result = mysqli_query($conn, $sql);

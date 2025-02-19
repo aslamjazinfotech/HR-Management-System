@@ -19,7 +19,7 @@ if(isset($_GET['deleteid'])){
     $sql="delete from `attendance` where id=$id";
     $result=mysqli_query($conn,$sql);
     if($result){
-        // echo "Delete Successfully";
+      
         header('location:AttendanceTable.php');
     }
     else{
@@ -83,39 +83,49 @@ if(isset($_GET['deleteid'])){
       <th>Date</th>
       <th>TimeIn</th>
       <th>Timeout</th>
+      <th>Total hours</th>
       <th>operation</th>
     </tr>
   </thead>
   <tbody>
     </tbody>
     <?php 
-    $sql="select * from `attendance`";;
-    $result=mysqli_query($conn,$sql);
-    if($result){
-      while($row=mysqli_fetch_assoc($result)){
-        $id=$row['id'];
-        $Employee=$row['Employee'];
-        $Date=$row['Date'];
-        $Timein=$row['Timein'];
-        $Timeout=$row['Timeout'];
+$sql="SELECT * FROM `attendance`";
+$result=mysqli_query($conn,$sql);
+if($result){
+    while($row=mysqli_fetch_assoc($result)){
+        $id = $row['id'];
+        $Employee = $row['Employee'];
+        $Date = $row['Date'];
+        $Timein = $row['Timein'];
+        $Timeout = $row['Timeout'];
+
+        
+        if ($Timeout == '00:00:00' || empty($Timeout)) {
+            $Totalhour = "0h 0m";
+        } else {
+            $timeInObj = new DateTime($Timein);
+            $timeOutObj = new DateTime($Timeout);
+            $interval = $timeInObj->diff($timeOutObj);
+            $Totalhour = $interval->format('%h h %i m');
+        }
+
         echo '<tr>
         <th scope="row">'.$id.'</th>
         <td>'.$Employee.'</td>
-         <td>'.$Date.'</td>
-          <td>'.$Timein.'</td>
-           <td>'.$Timeout.'</td>
-           <td>
-           
-           <button class="btn btn-primary"><a  href="update.php? updateid='.$id.'" class="text-light text-white text-decoration-none">Update</a></button>
-           <button class="btn btn-danger"><a  href="AttendanceTable.php? deleteid='.$id.'" class="text-light text-white text-decoration-none">Delete</a></button>
-           </td>
-
-    </tr>';
-      }
+        <td>'.$Date.'</td>
+        <td>'.$Timein.'</td>
+        <td>'.$Timeout.'</td>
+        <td>'.$Totalhour.'</td>
+        <td>
+            <button class="btn btn-primary"><a href="update.php?updateid='.$id.'" class="text-light text-white text-decoration-none">Update</a></button>
+            <button class="btn btn-danger"><a href="AttendanceTable.php?deleteid='.$id.'" class="text-light text-white text-decoration-none">Delete</a></button>
+        </td>
+        </tr>';
     }
-    
-    
-    ?>
+}
+?>
+
 
     
   </tbody>
